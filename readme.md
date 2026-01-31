@@ -3,6 +3,9 @@
 > [!NOTE]
 > Nextcloud AIO is actively looking for contributors. See [the forum post](https://help.nextcloud.com/t/nextcloud-aio-is-looking-for-contributors/205234).
 
+> [!IMPORTANT]
+> **🔒 Privacy & Data Sovereignty:** Nextcloud AIO is fully self-hosted. Your data stays on your infrastructure and is never sent to external parties. See **[PRIVACY.md](./PRIVACY.md)** for complete details on data handling and privacy.
+
 The official Nextcloud installation method. Nextcloud AIO provides easy deployment and maintenance with most features included in this one Nextcloud instance. 
 
 Included are:
@@ -343,6 +346,17 @@ https://your-domain-that-points-to-this-server.tld:8443
 
 ### Where can I find additional documentation?
 Some of the documentation is available on [GitHub Discussions](https://github.com/nextcloud/all-in-one/discussions/categories/wiki).
+
+### Security and Privacy Documentation
+
+Nextcloud AIO includes comprehensive security and privacy documentation:
+
+- **[PRIVACY.md](./PRIVACY.md)** - Complete privacy and data handling policy. **Essential reading for organizations with strict data privacy requirements.** Explains where your data is stored, what external connections exist (spoiler: none involving your data), and how to maintain complete data sovereignty.
+- **[SECURITY_SUMMARY.md](./SECURITY_SUMMARY.md)** - Executive summary of security audit findings
+- **[SECURITY_AUDIT_REPORT.md](./SECURITY_AUDIT_REPORT.md)** - Comprehensive security audit report
+- **[SECURITY_CHECKLIST.md](./SECURITY_CHECKLIST.md)** - Deployment and maintenance security best practices
+
+**Key Privacy Guarantee:** Your data never leaves your infrastructure unless you explicitly configure it to do so. Nextcloud AIO is ideal for organizations requiring complete data sovereignty including healthcare, financial, government, and cybersecurity companies.
 
 ### How does it work?
 Nextcloud AIO is inspired by projects like Portainer that manage the docker daemon by talking to it through the docker socket directly. This concept allows a user to install only one container with a single command that does the heavy lifting of creating and managing all containers that are needed in order to provide a Nextcloud installation with most features included. It also makes updating a breeze and is not bound to the host system (and its slow updates) anymore as everything is in containers. Additionally, it is very easy to handle from a user perspective because a simple interface for managing your Nextcloud AIO installation is provided.
