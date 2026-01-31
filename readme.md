@@ -85,6 +85,60 @@ Included are:
 |---|---|
 | ![image](https://github.com/user-attachments/assets/6ef5d7b5-86f2-402c-bc6c-b633af2ca7dd) | ![image](https://github.com/user-attachments/assets/939d0fdf-436f-433d-82d3-27548263a040) |
 
+## Quick Start for Local Testing
+
+Want to quickly try Nextcloud AIO on your local machine with Docker? Here's the simplest way to get started:
+
+### Prerequisites
+- Docker installed on your system ([installation guide](https://docs.docker.com/engine/install/#supported-platforms))
+- At least 4GB of free RAM
+- Ports 8080 (or your chosen port) available on your machine
+
+### Option 1: Using Docker Compose (Recommended)
+
+1. **Clone or download this repository** (or just download the [compose.yaml](./compose.yaml) file)
+
+2. **Start the containers:**
+   ```bash
+   docker compose up -d
+   ```
+
+3. **Access the AIO interface:** Open your browser and navigate to:
+   ```
+   https://localhost:8080
+   ```
+   (Accept the self-signed certificate warning)
+
+4. **Follow the setup wizard** in the AIO interface to configure and start your Nextcloud instance.
+
+### Option 2: Using Docker Run
+
+Run this single command:
+```bash
+docker run \
+  --init \
+  --sig-proxy=false \
+  --name nextcloud-aio-mastercontainer \
+  --restart always \
+  --publish 8080:8080 \
+  --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
+  --volume /var/run/docker.sock:/var/run/docker.sock:ro \
+  ghcr.io/nextcloud-releases/all-in-one:latest
+```
+
+Then access the AIO interface at `https://localhost:8080` (accept the self-signed certificate warning).
+
+### Important Notes for Local Testing
+
+> [!NOTE]
+> **Local-only setup:** The quick start above is suitable for local testing and evaluation. For production use or to make your instance accessible from the internet, see the full [How to use this?](#how-to-use-this) section below.
+
+> [!NOTE]
+> **Domain requirements:** Nextcloud AIO requires HTTPS with valid certificates. For local testing, the AIO interface uses a self-signed certificate. If you want to run Nextcloud locally without public internet access but with proper SSL, see the [local instance documentation](./local-instance.md). The recommended approach is using [Tailscale](https://github.com/nextcloud/all-in-one/discussions/6817).
+
+> [!TIP]
+> **Stopping and cleanup:** To stop and remove all containers: `docker compose down` (or `docker stop nextcloud-aio-mastercontainer` if using docker run). To completely remove all data: `docker compose down -v` or `docker volume rm nextcloud_aio_mastercontainer`.
+
 ## How to use this?
 
 The steps below are written for Linux. For platform-specific guidance see:
